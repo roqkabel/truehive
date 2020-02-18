@@ -1,0 +1,195 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <header
+    class="hero"
+    style="
+"
+  >
+    <div class="container">
+      <div class="hero-content">
+        <h1 class="text-white">
+          Find true freelancers for your <br />
+          dream project
+        </h1>
+        <a class="btn btn-primary rounded-0 pr-4 pl-4" href="{% url 'account_signup' %}"
+          >I want to work</a
+        >
+        <a class="btn btn-secondary rounded-0 pr-4 pl-4" href="{% url 'account_login' %}"
+          >I want to hire</a
+        >
+      </div>
+    </div>
+  </header>
+
+  <section class="cat-section p-5">
+    <!-- <div class="container"> -->
+    <h3 class="text-center">Choose from available categories</h3>
+    <br />
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-4 col-sm-12">
+          <a href="#0">
+            <div class="card shadow" style="width:20rem;">
+              <img
+                src="http://truehive.mawuenagroup.com/wp-content/uploads/2020/01/responsive-website-designers.jpg"
+                class="card-img-top"
+              />
+              <div class="card-body text-center p-2">
+                <h4 class="card-title text-dark">Website development</h4>
+                <h6 class="card-subtitle mb-2 text-muted">
+                  Starting form $300
+                </h6>
+              </div>
+            </div>
+          </a>
+        </div>
+        <div class="col-lg-4 col-sm-12">
+          <a href="#0">
+            <div class="card shadow" style="width:20rem;">
+              <img
+                src="http://truehive.mawuenagroup.com/wp-content/uploads/2020/01/TG.jpg"
+                class="card-img-top"
+              />
+              <div class="card-body text-center p-2">
+                <h4 class="card-title text-dark">Graphic Design</h4>
+                <h6 class="card-subtitle mb-2 text-muted">
+                  Starting form $100
+                </h6>
+              </div>
+            </div>
+          </a>
+        </div>
+        <div class="col-lg-4 col-sm-12">
+          <a href="#0">
+            <div class="card shadow" style="width:20rem;">
+              <img
+                src="http://truehive.mawuenagroup.com/wp-content/uploads/2020/01/TM.jpg"
+                class="card-img-top"
+              />
+              <div class="card-body text-center p-2">
+                <h4 class="card-title text-dark">Mobile App</h4>
+                <h6 class="card-subtitle mb-2 text-muted">
+                  Starting form $500
+                </h6>
+              </div>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+    <br />
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-4 col-sm-12">
+          <a href="#0">
+            <div class="card shadow" style="width:20rem;">
+              <img
+                src="http://truehive.mawuenagroup.com/wp-content/uploads/2020/01/TD.jpg"
+                class="card-img-top"
+              />
+              <div class="card-body text-center p-2">
+                <h4 class="card-title text-dark">Digital Marketing</h4>
+                <h6 class="card-subtitle mb-2 text-muted">
+                  Starting form $150
+                </h6>
+              </div>
+            </div>
+          </a>
+        </div>
+        <div class="col-lg-4 col-sm-12">
+          <a href="#0">
+            <div class="card shadow" style="width:20rem;">
+              <img
+                src="http://truehive.mawuenagroup.com/wp-content/uploads/2020/01/TC.jpg"
+                class="card-img-top"
+              />
+              <div class="card-body text-center p-2">
+                <h4 class="card-title text-dark">Copywriting</h4>
+                <h6 class="card-subtitle mb-2 text-muted">
+                  Starting form $50
+                </h6>
+              </div>
+            </div>
+          </a>
+        </div>
+        <div class="col-lg-4 col-sm-12">
+          <a href="#0">
+            <div class="card shadow" style="width:20rem;">
+              <img
+                src="http://truehive.mawuenagroup.com/wp-content/uploads/2020/01/TS.jpg"
+                class="card-img-top"
+              />
+              <div class="card-body text-center p-2">
+                <h4 class="card-title text-dark">Social Media Management</h4>
+                <h6 class="card-subtitle mb-2 text-muted">
+                  Starting form $100
+                </h6>
+              </div>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+    <!-- </div> -->
+  </section>
+  <!-- HOW IT WORKS -->
+
+  <section class="bg-light p-5">
+    <div class="container">
+      <h3 class="text-center mb-4">How to get work done</h3>
+      <div class="row">
+        <div class="col-lg-4 col-sm-12">
+          <div class="card bg-transparent border-0" style="width:20rem">
+            <img
+              style="width: 10rem ; margin: auto"
+              src="http://truehive.mawuenagroup.com/wp-content/uploads/2020/01/files-and-folders-300x300.png"
+            />
+            <div class="card-body text-center p-2">
+              <h4 class="card-title text-dark">Post a project</h4>
+              <p class="card-text">
+                Simply post a project you need completed and freelancers will
+                be available
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-4 col-sm-12">
+          <div class="card bg-transparent border-0" style="width:20rem">
+            <img
+              style="width: 10rem; margin: auto"
+              src="http://truehive.mawuenagroup.com/wp-content/uploads/2020/01/user-300x300.png"
+              class="card-img-top"
+            />
+            <div class="card-body text-center p-2">
+              <h4 class="card-title text-dark">Choose freelancers</h4>
+              <p class="card-text">
+                Whatever your needs, there will be a freelancer to get it
+                done.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-4 col-sm-12">
+          <div class="card bg-transparent border-0" style="width:20rem">
+            <img
+              style="width: 10rem; margin: auto"
+              src="http://truehive.mawuenagroup.com/wp-content/uploads/2020/01/money-300x300.png"
+              class="card-img-top"
+            />
+            <div class="card-body text-center p-2">
+              <h4 class="card-title text-dark">Make payment</h4>
+              <p class="card-text">
+                Once you get the right freelancer, payment needs to be made
+                before work starts.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {% endblock %}
