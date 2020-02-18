@@ -8,6 +8,7 @@ SECRET_KEY = '-05sgp9!deq=q1nltm@^^2cc+v29i(tyybv3v2t77qi66czazj'
 ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
+    'crispy_forms',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -20,6 +21,7 @@ INSTALLED_APPS = [
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
+
 ]
 
 MIDDLEWARE = [
@@ -96,7 +98,9 @@ SITE_ID = 1
 #     'login': 'core.forms.LOGIN_FORM'
 # }
 
-MEDIA_ROOT = '/media/'
+MEDIA_ROOT = 'media/'
 MEDIA_URL = 'http://localhost:8000/media/'
 
 LOGIN_REDIRECT_URL = '/profile/'
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4'

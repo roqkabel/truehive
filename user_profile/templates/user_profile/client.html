@@ -1,0 +1,27 @@
+{% extends 'base.html' %} {% load crispy_forms_tags %} {% block content %}
+<div class="bg-light">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-6 offset-lg-2">
+        <h3 class="mt-5 ">
+          Register as Client
+        </h3>
+        <br />
+        <div>
+          <p class="text-muted">Please provide a valid info</p>
+          <form method="post" action="/profile/">
+            {% csrf_token %} {{form|crispy}}
+            <input type="hidden" name="account-type" value="freelance" />
+            <button type="submit" class="btn btn-primary">
+              Create Account >>
+            </button>
+          </form>
+        </div>
+        <br />
+        <br />
+        <br />
+      </div>
+    </div>
+  </div>
+  {% endblock %}
+</div>

@@ -2,13 +2,17 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path, include
+from user_profile.views import freelancer_page, client_page
 
 urlpatterns = [
-    path('profile/', include('user_profile.urls', namespace='user_profile')),
+    path('profile/', include('user_profile.urls')),
+    path('', include('core.urls', namespace='core')),
     path('accounts/', include('allauth.urls')),
     path('admin/', admin.site.urls),
-    path('', include('core.urls', namespace='core')),
-
+    # USER PROFILE URLS
+    path('profile/freelancer/',
+         freelancer_page, name='lancer_account'),
+    path('profile/client/', client_page, name='client_account'),
 ]
 
 if settings.DEBUG:
