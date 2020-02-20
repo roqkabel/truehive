@@ -9,7 +9,11 @@
         <br />
         <div>
           <p class="text-muted">All Field are required to register</p>
-          <form method="post" action="/profile/">
+          <form
+            method="post"
+            action="{% url 'lancer_account' %}"
+            enctype="multipart/form-data"
+          >
             {% csrf_token %} {{form|crispy}}
             <input type="hidden" name="account-type" value="freelance" />
             <button type="submit" class="btn btn-primary">

@@ -9,7 +9,11 @@
         <br />
         <div>
           <p class="text-muted">Please provide a valid info</p>
-          <form method="post" action="/profile/">
+          <form
+            method="post"
+            action="{% url 'client_account' %}"
+            enctype="multipart/form-data"
+          >
             {% csrf_token %} {{form|crispy}}
             <input type="hidden" name="account-type" value="freelance" />
             <button type="submit" class="btn btn-primary">

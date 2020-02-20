@@ -30,8 +30,9 @@ EXPERIENCE = (
 
 
 class UserProfile(models.Model):
-    user = models.ForeignKey(settings.AUTH_USER_MODEL,
-                             on_delete=models.CASCADE)
+    user = models.OneToOneField(settings.AUTH_USER_MODEL,
+                                on_delete=models.CASCADE)
+    # user = models.ForeignKey()
     profile_completed = models.BooleanField(default=False)
     account_type = models.CharField(choices=ACCOUNT_TYPE, max_length=2)
     mobile = models.IntegerField(default=0)
