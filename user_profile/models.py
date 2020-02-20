@@ -4,7 +4,7 @@ from django.conf import settings
 
 SKILLS_CHOICE = (
     ('WD', 'Web Development'),
-    ('GD', 'Graphic Development'),
+    ('GD', 'Graphic Design'),
     ('MA', 'Mobile App Development'),
     ('DM', 'Digital Marketing'),
     ('CW', 'Copy Writing'),

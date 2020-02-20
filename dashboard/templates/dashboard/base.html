@@ -4,13 +4,16 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Truehive Dashboard | {{user.username}}</title>
+    <title>Truehive {% block title %} {% endblock %} | {{user.username}}</title>
     <link
       rel="stylesheet"
       href="//fonts.googleapis.com/css?family=Titillium+Web:400,300,700&amp;subset=latin,latin-ext"
       type="text/css"
     />
-
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css"
+    />
     <link rel="stylesheet" href="{% static './css/bootstrap-ui.min.css' %}" />
   </head>
   <body>
@@ -40,13 +43,13 @@
         <!-- Collapsible menu -->
         <div class="collapse navbar-collapse" id="kssMenu">
           <ul class="nav navbar-nav">
-            <li class="active"><a href="#">Dashboard</a></li>
-            <li><a href="#">Pages</a></li>
-            <li><a href="#">Media</a></li>
-            <li><a href="#">Users</a></li>
+            <li class=""><a href="/dashboard/">Dashboard</a></li>
+            <li><a href="/dashboard/projects/">Projects</a></li>
+            <li><a href="#">Freelancers</a></li>
+            <!-- <li><a href="#">Users</a></li> -->
           </ul>
           <ul class="nav navbar-nav navbar-right">
-            <li class="navbar-icon">
+            <!-- <li class="navbar-icon">
               <a href="#" target="_blank" title="Open site in a new tab">
                 <span
                   class="glyphicon glyphicon-home"
@@ -54,11 +57,14 @@
                 ></span>
                 <span class="visible-xs">Home</span>
               </a>
-            </li>
+            </li> -->
             <li class="navbar-icon">
               <a href="#" title="Settings">
-                <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
-                <span class="visible-xs">Settings</span>
+                <span
+                  class="glyphicon glyphicon-bell"
+                  aria-hidden="true"
+                ></span>
+                <span class="visible-xs">Notifications</span>
               </a>
             </li>
             <li class="dropdown">
@@ -79,7 +85,7 @@
                 ></span>
               </a>
               <ul class="dropdown-menu">
-                <li class="dropdown-header">James Brown</li>
+                <li class="dropdown-header">Hi, {{user.username}}</li>
                 <li class="divider"></li>
                 <li>
                   <a href="#">
@@ -91,7 +97,7 @@
                   </a>
                 </li>
                 <li>
-                  <a href="#">
+                  <a href="{% url 'account_logout' %}">
                     <span
                       class="glyphicon glyphicon-off offset-right icon-shift-down"
                       aria-hidden="true"
@@ -109,13 +115,30 @@
       </div>
       <!-- .container -->
     </nav>
+
+    <!-- section page -->
+    <section class="section section-header">
+      <div class="container">
+        {% block topSection %} {% endblock %}
+      </div>
+    </section>
     {% block content %} {% endblock %}
     <script
       src="https://code.jquery.com/jquery-3.4.1.min.js"
       integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
       crossorigin="anonymous"
     ></script>
-    <script src="{% static './js/bootstrap-ui.min.js' %}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+    <!-- <script src="{% static './js/bootstrap-ui.min.js' %}"></script> -->
+    <script src="{% static './js/main.min.js' %}"></script>
+    <script src="{% static './js/confirmation.js' %}"></script>
+    <script src="{% static './js/ckeditor-loader.js' %}"></script>
+    <script src="{% static './js/datetimepicker-loader.js' %}"></script>
+    <script src="{% static './js/disable.js' %}"></script>
+    <script src="{% static './js/filterable.js' %}"></script>
+    <script src="{% static './js/select2-loader.js' %}"></script>
+    <script src="{% static './js/slugger.js' %}"></script>
+    <script src="{% static './js/sortable-table.js' %}"></script>
+    <script src="{% static './js/main.js' %}"></script>
   </body>
 </html>

@@ -1,0 +1,46 @@
+{% extends './base.html' %} {% block title %} - Projects {% endblock title %}
+
+{% block topSection %}
+<a href="/dashboard/projects/new/" class="btn btn-primary btn-raised pull-right">
+    <span class="glyphicon glyphicon-plus-sign offset-right" aria-hidden="true"></span>
+    New Project
+</a>
+<h2 class="section-header-title"> <span class="fas fa-mug-hot 3x"></span> — Project | Info
+</h2>
+{%  endblock %}
+{%block content %}
+<div class="container">
+
+  
+    <div class="panel-body">
+     <b>Applicants | 78 </b>
+    </div>
+    <div class="row">
+      <div class="col-lg-4">
+        <img src="{{project.photo.url}}" alt="" class="img-responsive">
+      </div>
+      <div class="col-lg-8">
+        
+        <p>Name : {{project.name}} </p>
+        <p>Speciality : {{project.get_category_display}} </p>
+        <p>Dealdline : {{project.duration}} </p>
+        <p>
+          <div class="panel panel-default">
+            <div class="panel-heading">About project </div>
+            <div class="panel-body">
+              {{project.about}} 
+            </div>
+          </div>
+        </p>
+        <p>Price : GHC. {{project.price_range}} </p>
+        <a href="/dashboard/projects/" class="back">Back</a>
+      </div>
+    </div>
+
+  </div>
+  <!-- — Thumbnails
+  <span class="fas fa-mug-hot fa-5x" aria-hidden="true"></span>
+  <span class="visible-xs">Notifications</span> -->
+</div>
+
+{% endblock %}
