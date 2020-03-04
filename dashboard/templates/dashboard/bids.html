@@ -1,0 +1,75 @@
+{% extends './base.html' %} {% block title %} - Projects {% endblock title %}
+
+{% block topSection %}
+<!-- <div class="row">
+    <div class="col-sm-8">
+        <h1 class="section-header-title">
+            <span class="fas fa-mug-hot 3x"></span> — Projects
+        </h1>
+    </div>
+    <div class="col-sm-1">
+        <a href="#" class="btn btn-primary btn-raised cta">
+            <span class="glyphicon glyphicon-plus-sign offset-right" aria-hidden="true"></span>
+            New Page
+        </a>
+    </div>
+</div> -->
+<h2 class="section-header-title"> <span class="fas fa-mug-hot 3x"></span> — Projects | BIDS
+</h2>
+{%  endblock %}
+{%block content %}
+<div class="container">
+
+
+    <div class="panel-body">
+        List of freelancers bids on <a href="/dashboard/projects/{{ project.id}}">{{ project.name }}</a>
+    </div>
+    <div class="table-responsive">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th class="table-cell-id">#</th>
+                    <th></th>
+                    <th>Freelancer</th>
+                    <th>Bid Price</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for bid in bids %}
+                <tr>
+                    <td class="table-cell-id">{{ forloop.counter }}</td>
+                    <th>
+                        <img width="50" height="50" src="{{bid.user.userprofile.profile_image.url}}"
+                            class="img-responsive" alt="">
+                    </th>
+                    <td><a href="#0">{{ bid.user.username }}</a></td>
+                    <td>GHC.{{ bid.requested_amount }}</td>
+                    <td class="table-cell-actions">
+                        <!-- {% for assign in assignment %} -->
+                        {% if bid.project.assignment.user is bid.user %}
+                        You assigned this
+                        {% else %}
+                        <a href="/dashboard/projects/{{ project.id}}/assign/{{bid.user.id}}/"
+                            class="item-action btn-primary btn" title="choose Freelancer">
+                            Choose this one
+                        </a>
+                        {% endif %}
+
+                        <!-- {% endfor %} -->
+
+                    </td>
+                </tr>
+
+                {% endfor %}
+
+            </tbody>
+        </table>
+    </div>
+</div>
+<!-- — Thumbnails
+  <span class="fas fa-mug-hot fa-5x" aria-hidden="true"></span>
+  <span class="visible-xs">Notifications</span> -->
+</div>
+
+{% endblock %}

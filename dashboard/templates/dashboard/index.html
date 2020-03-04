@@ -1,9 +1,69 @@
 {% extends './base.html' %} {% block title %} - Dashboard {% endblock %} <br />
+
+
+
+{% block topSection %}
+
+<h2 class="section-header-title"> <span class="fas fa-mug-hot 3x"></span> — Dashboard
+</h2>
+{%  endblock %}
+
 {% block content %}
+
 <div class="container">
-  Lorem, ipsum dolor sit amet consectetur adipisicing elit. Vero libero
-  accusantium facilis sapiente animi modi, voluptas autem temporibus eligendi
-  dolor odio omnis quaerat cum id in repudiandae amet quasi accusamus!
+
+  <div class="panel-body">
+    List of pending projects to be finished
+  </div>
+  <div class="table-responsive">
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th class="table-cell-id">#</th>
+          <th>Project Title</th>
+          <th>Freelancer</th>
+          <th>Deadline</th>
+          <th>Price</th>
+          <th class="text-right">Days left</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for assignment in project_assignment %}
+        <tr>
+          <td class="table-cell-id">{{ forloop.counter }}</td>
+          <td><a href="/dashboard/projects/{{ project.id}}">{{ assignment.project.name }}</a></td>
+          <td>{{ assignment.user.username }}</td>
+          <td>{{ assignment.project.duration }}</td>
+          <td>GHc. {{ assignment.project.price_range }}</td>
+          <td class="text-right text-nowrap">
+            {{ assignment.project.duration|timeuntil }}
+            <!-- <small>06/09/2015 18:05</small> -->
+          </td>
+          <td class="table-cell-actions">
+
+            {% if user.userprofile.account_type == 'FL' %}
+            <span class="bg-danger"> pending to be completed</span>
+            {% else %}
+            <a href="#0" onclick="confirm('Are you sure ?')" class="item-action item-action-danger"
+              title="cancel assignment">
+              cancel
+            </a>
+
+            {% endif %}
+
+          </td>
+        </tr>
+
+        {% endfor %}
+
+      </tbody>
+    </table>
+  </div>
+</div>
+<!-- — Thumbnails
+<span class="fas fa-mug-hot fa-5x" aria-hidden="true"></span>
+<span class="visible-xs">Notifications</span> -->
 </div>
 
 {% endblock %}

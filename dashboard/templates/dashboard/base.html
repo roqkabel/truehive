@@ -1,55 +1,41 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Truehive {% block title %} {% endblock %} | {{user.username}}</title>
-    <link
-      rel="stylesheet"
-      href="//fonts.googleapis.com/css?family=Titillium+Web:400,300,700&amp;subset=latin,latin-ext"
-      type="text/css"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css"
-    />
-    <link rel="stylesheet" href="{% static './css/bootstrap-ui.min.css' %}" />
-  </head>
-  <body>
-    <!-- Main navigation -->
-    <nav class="navbar navbar-static-top navbar-primary">
-      <div class="container">
-        <!-- Brand and menu toggle -->
-        <div class="navbar-header">
-          <button
-            type="button"
-            class="navbar-toggle"
-            data-toggle="collapse"
-            data-target="#kssMenu"
-          >
-            <span class="sr-only">Menu</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a
-            href="#"
-            class="navbar-brand offset-right-large"
-            title="Bootstrap UI"
-            >Truehive</a
-          >
-        </div>
-        <!-- Collapsible menu -->
-        <div class="collapse navbar-collapse" id="kssMenu">
-          <ul class="nav navbar-nav">
-            <li class=""><a href="/dashboard/">Dashboard</a></li>
-            <li><a href="/dashboard/projects/">Projects</a></li>
-            <li><a href="#">Freelancers</a></li>
-            <!-- <li><a href="#">Users</a></li> -->
-          </ul>
-          <ul class="nav navbar-nav navbar-right">
-            <!-- <li class="navbar-icon">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Truehive {% block title %} {% endblock %} | {{user.username}}</title>
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Titillium+Web:400,300,700&amp;subset=latin,latin-ext"
+    type="text/css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" />
+  <link rel="stylesheet" href="{% static './css/bootstrap-ui.min.css' %}" />
+</head>
+
+<body>
+  <!-- Main navigation -->
+  <nav class="navbar navbar-static-top navbar-white">
+    <div class="container">
+      <!-- Brand and menu toggle -->
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle bg-primary" data-toggle="collapse" data-target="#kssMenu">
+          <span class="sr-only">Menu</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a href="#" class="navbar-brand offset-right-large" title="Bootstrap UI">Truehive</a>
+      </div>
+      <!-- Collapsible menu -->
+      <div class="collapse navbar-collapse" id="kssMenu">
+        <ul class="nav navbar-nav">
+          <li class=""><a href="/dashboard/">Dashboard</a></li>
+          <li><a href="/dashboard/projects/">Projects</a></li>
+          <!-- <li><a href="#">Freelancers</a></li> -->
+          <!-- <li><a href="#">Users</a></li> -->
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+          <!-- <li class="navbar-icon">
               <a href="#" target="_blank" title="Open site in a new tab">
                 <span
                   class="glyphicon glyphicon-home"
@@ -58,87 +44,70 @@
                 <span class="visible-xs">Home</span>
               </a>
             </li> -->
-            <li class="navbar-icon">
-              <a href="#" title="Settings">
-                <span
-                  class="glyphicon glyphicon-bell"
-                  aria-hidden="true"
-                ></span>
-                <span class="visible-xs">Notifications</span>
-              </a>
-            </li>
-            <li class="dropdown">
-              <a
-                href="#"
-                class="dropdown-toggle"
-                data-toggle="dropdown"
-                title="My profile"
-              >
-                <span
-                  class="glyphicon glyphicon-user offset-right"
-                  aria-hidden="true"
-                ></span>
-                <span class="visible-xs-inline offset-right">My Profile</span>
-                <span
-                  class="glyphicon glyphicon-menu-down"
-                  aria-hidden="true"
-                ></span>
-              </a>
-              <ul class="dropdown-menu">
-                <li class="dropdown-header">Hi, {{user.username}}</li>
-                <li class="divider"></li>
-                <li>
-                  <a href="#">
-                    <span
-                      class="glyphicon glyphicon-user offset-right icon-shift-down"
-                      aria-hidden="true"
-                    ></span>
-                    My Account
-                  </a>
-                </li>
-                <li>
-                  <a href="{% url 'account_logout' %}">
-                    <span
-                      class="glyphicon glyphicon-off offset-right icon-shift-down"
-                      aria-hidden="true"
-                    ></span>
-                    Sign out
-                  </a>
-                </li>
-              </ul>
-            </li>
-            <!-- .dropdown -->
-          </ul>
-          <!-- .nav -->
-        </div>
-        <!-- .collapsible -->
-      </div>
-      <!-- .container -->
-    </nav>
+          <li class="navbar-icon">
+            <a href="/dashboard/notifications/" title="Settings">
 
-    <!-- section page -->
-    <section class="section section-header">
-      <div class="container">
-        {% block topSection %} {% endblock %}
+
+              <span class="badge badge-danger"> {{user.notification.objects.countunread}}
+              </span>
+              <span class="glyphicon glyphicon-bell" aria-hidden="true">
+                </button></span>
+              <span class="visible-xs">Notifications </span>
+            </a>
+          </li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" title="My profile">
+              <span class="glyphicon glyphicon-user offset-right" aria-hidden="true"></span>
+              <span class="visible-xs-inline offset-right">My Profile</span>
+              <span class="glyphicon glyphicon-menu-down" aria-hidden="true"></span>
+            </a>
+            <ul class="dropdown-menu">
+              <li class="dropdown-header">Hi, {{user.username}}</li>
+              <li class="divider"></li>
+              <li>
+                <a href="/dashboard/account/edit/">
+                  <span class="glyphicon glyphicon-user offset-right icon-shift-down" aria-hidden="true"></span>
+                  My Account
+                </a>
+              </li>
+              <li>
+                <a href="{% url 'account_logout' %}">
+                  <span class="glyphicon glyphicon-off offset-right icon-shift-down" aria-hidden="true"></span>
+                  Sign out
+                </a>
+              </li>
+            </ul>
+          </li>
+          <!-- .dropdown -->
+        </ul>
+        <!-- .nav -->
       </div>
-    </section>
-    {% block content %} {% endblock %}
-    <script
-      src="https://code.jquery.com/jquery-3.4.1.min.js"
-      integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
-      crossorigin="anonymous"
-    ></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
-    <!-- <script src="{% static './js/bootstrap-ui.min.js' %}"></script> -->
-    <script src="{% static './js/main.min.js' %}"></script>
-    <script src="{% static './js/confirmation.js' %}"></script>
-    <script src="{% static './js/ckeditor-loader.js' %}"></script>
-    <script src="{% static './js/datetimepicker-loader.js' %}"></script>
-    <script src="{% static './js/disable.js' %}"></script>
-    <script src="{% static './js/filterable.js' %}"></script>
-    <script src="{% static './js/select2-loader.js' %}"></script>
-    <script src="{% static './js/slugger.js' %}"></script>
-    <script src="{% static './js/sortable-table.js' %}"></script>
-    <script src="{% static './js/main.js' %}"></script>
-  </body>
+      <!-- .collapsible -->
+    </div>
+    <!-- .container -->
+  </nav>
+
+  <!-- section page -->
+  <section class="section section-header">
+    <div class="container">
+      {% block topSection %} {% endblock %}
+    </div>
+  </section>
+  {% block content %} {% endblock %}
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+    integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+  <!-- <script src="{% static './js/main.js' %}"></script> -->
+  <!-- <script src="{% static './js/bootstrap-ui.min.js' %}"></script> -->
+  <script src="{% static './js/main.min.js' %}"></script>
+  <script src="{% static './js/confirmation.js' %}"></script>
+  <script src="{% static './js/ckeditor-loader.js' %}"></script>
+  <script src="{% static './js/datetimepicker-loader.js' %}"></script>
+  <script src="{% static './js/disable.js' %}"></script>
+  <script src="{% static './js/filterable.js' %}"></script>
+  <script src="{% static './js/select2-loader.js' %}"></script>
+  <script src="{% static './js/slugger.js' %}"></script>
+  <script src="{% static './js/sortable-table.js' %}"></script>
+</body>
+
 </html>

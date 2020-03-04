@@ -34,3 +34,44 @@ class Project(models.Model):
 
     class Meta():
         ordering = ['-id']
+
+
+class ProjectApplication(models.Model):
+    user = models.ForeignKey(settings.AUTH_USER_MODEL,
+                             on_delete=models.CASCADE)
+    date_applied = models.DateTimeField(auto_now=True)
+    project = models.ForeignKey(Project, on_delete=models.CASCADE)
+    requested_amount = models.IntegerField()
+
+    def __str__(self):
+        return self.project.name
+
+    class Meta():
+        ordering = ['-id']
+
+
+class ProjectAssignment(models.Model):
+    user = models.ForeignKey(
+        settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    client_id = models.IntegerField()
+    project = models.ForeignKey(Project, on_delete=models.CASCADE)
+    completed = models.BooleanField(default=False)
+    date_assigned = models.DateTimeField(auto_now=True)
+    date_completed = models.DateField(null=True)
+    revoke = models.BooleanField(default=False)
+
+    def __str__(self):
+        return self.project.name + '| to' + self.user.username
+
+
+class Notification(models.Model):
+    user = models.ForeignKey(settings.AUTH_USER_MODEL,
+                             on_delete=models.CASCADE)
+    note = models.CharField(max_length=250)
+    creatd_on = models.DateTimeField(auto_now=True)
+    read = models.BooleanField(default=False)
+    read_on = models.DateTimeField(null=True)
+    link = models.CharField(max_length=250)
+
+    def countunread(self):
+        return self.objects.filter(read=False)

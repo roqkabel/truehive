@@ -1,11 +1,8 @@
 {% extends './base.html' %} {% load crispy_forms_tags %} {% block title %} - Projects {% endblock title %}
 
 {% block topSection %}
-<a href="/dashboard/projects/new/" class="btn btn-primary btn-raised pull-right">
-    <span class="glyphicon glyphicon-plus-sign offset-right" aria-hidden="true"></span>
-    New Project
-</a>
-<h2 class="section-header-title"> <span class="fas fa-mug-hot 3x"></span> — Project | Edit
+
+<h2 class="section-header-title"> <span class="fas fa-mug-hot 3x"></span> — My Account
 </h2>
 {%  endblock %}
 {%block content %}
@@ -13,11 +10,11 @@
 
 
     <div class="panel-body">
-        <b>Applicants | 78 </b>
+        <b>Profile Picture </b>
     </div>
     <div class="row">
         <div class="col-lg-4">
-            <img src="{{ project.photo.url }}" class="img-responsive" alt="project-photo">
+            <img src="{{ user.userprofile.profile_image.url }}" class="img-responsive" alt="project-photo">
         </div>
         <div class="col-lg-8 offset-lg-2">
 

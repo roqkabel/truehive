@@ -1,46 +1,94 @@
-{% extends './base.html' %} {% block title %} - Projects {% endblock title %}
+{% extends './base.html' %} {% load crispy_forms_tags %} {% block title %} - Projects {% endblock title %}
 
 {% block topSection %}
-<a href="/dashboard/projects/new/" class="btn btn-primary btn-raised pull-right">
-    <span class="glyphicon glyphicon-plus-sign offset-right" aria-hidden="true"></span>
-    New Project
+
+{% if user.userprofile.account_type == 'FL' %}
+
+<a href="#" data-toggle="modal" data-target="#myModal" class="btn btn-success btn-raised pull-right">
+  <span class="glyphicon glyphicon-plus-sign offset-right" aria-hidden="true"></span>
+  Send Bid
 </a>
+{% else %}
+<a href="/dashboard/projects/new/" class="btn btn-primary btn-raised pull-right">
+  <span class="glyphicon glyphicon-plus-sign offset-right" aria-hidden="true"></span>
+  New Project
+</a>
+
+{% endif %}
 <h2 class="section-header-title"> <span class="fas fa-mug-hot 3x"></span> — Project | Info
 </h2>
 {%  endblock %}
 {%block content %}
 <div class="container">
 
-  
-    <div class="panel-body">
-     <b>Applicants | 78 </b>
-    </div>
-    <div class="row">
-      <div class="col-lg-4">
-        <img src="{{project.photo.url}}" alt="" class="img-responsive">
-      </div>
-      <div class="col-lg-8">
-        
-        <p>Name : {{project.name}} </p>
-        <p>Speciality : {{project.get_category_display}} </p>
-        <p>Dealdline : {{project.duration}} </p>
-        <p>
-          <div class="panel panel-default">
-            <div class="panel-heading">About project </div>
-            <div class="panel-body">
-              {{project.about}} 
-            </div>
-          </div>
-        </p>
-        <p>Price : GHC. {{project.price_range}} </p>
-        <a href="/dashboard/projects/" class="back">Back</a>
-      </div>
+
+  <div class="panel-body">
+
+    {% if user.userprofile.account_type == 'FL' %}
+
+    <div>You have <span class="bg-primary">-- {{ user.projectapplication_set.count }} bids --</span> to this project
     </div>
 
+    {% else %}
+
+    <b>Applicants | {{ project.projectapplication_set.count }} </b>
+    <a href="/dashboard/projects/{{ project.id}}/bids" class="item-action item-action-success" title="Delete">
+      See bids
+    </a>
+
+    {% endif %}
   </div>
-  <!-- — Thumbnails
+  <div class="row">
+    <div class="col-lg-4">
+      <img src="{{project.photo.url}}" alt="" class="img-responsive">
+    </div>
+    <div class="col-lg-8">
+
+      <p>Name : {{project.name}} </p>
+      <p>Speciality : {{project.get_category_display}} </p>
+      <p>Dealdline : {{project.duration}} </p>
+      <p>
+        <div class="panel panel-default">
+          <div class="panel-heading">About project </div>
+          <div class="panel-body">
+            {{project.about}}
+          </div>
+        </div>
+      </p>
+      <p>Price : GHC. {{project.price_range}} </p>
+      <a href="/dashboard/projects/" class="back">Back</a>
+    </div>
+  </div>
+
+</div>
+<!-- — Thumbnails
   <span class="fas fa-mug-hot fa-5x" aria-hidden="true"></span>
   <span class="visible-xs">Notifications</span> -->
 </div>
 
+<!-- MODAL -->
+
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+            aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">How much do you prefer for the Job ?</h4>
+      </div>
+      <form method="POST" action="/dashboard/projects/{{project.id}}/">
+        <div class="modal-body">
+
+          {% csrf_token %}
+          {{form|crispy}}
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+          <button type="submit" class="btn btn-primary">Send</button>
+        </div>
+      </form>
+
+    </div>
+  </div>
+</div>
 {% endblock %}
