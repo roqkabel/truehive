@@ -1,5 +1,4 @@
-# Django Project Boilerplate
-**TRUEHIVE PROJECT
+# TRUEHIVE PROJECT
 
 Steps:
 
