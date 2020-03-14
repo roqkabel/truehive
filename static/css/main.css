@@ -1,0 +1,27 @@
+@import url("https://fonts.googleapis.com/css?family=Lato:400,700&display=swap");
+
+body {
+  font-family: "Lato", sans-serif !important;
+}
+
+p {
+  opacity: 0.9;
+}
+
+a:hover {
+  text-decoration: none;
+}
+.hero {
+  background-color: rgba(12, 57, 104, 0.5);
+  min-height: 75vh;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-clip: border-box;
+  backface-visibility: visible;
+  background-blend-mode: multiply;
+  background-image: url(http://truehive.mawuenagroup.com/wp-content/uploads/2020/01/real.jpeg);
+}
+.hero-content {
+  padding-top: 200px;
+}
