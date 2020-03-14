@@ -105,3 +105,6 @@ MEDIA_URL = 'http://localhost:8000/media/'
 LOGIN_REDIRECT_URL = '/profile/'
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
+
+
+DISABLE_COLLECTSTATIC = 1
